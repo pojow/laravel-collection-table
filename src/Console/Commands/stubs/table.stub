@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Tables;
+
+use Pojow\LaravelCollectionTable\Abstracts\AbstractTableConfiguration;
+use Pojow\LaravelCollectionTable\Table;
+
+class DummyClass extends AbstractTableConfiguration
+{
+    protected function table(): Table
+    {
+        return Table::make()
+            ->collection(collect()) // Add your collection here : User::all()
+            ->filters([
+                // Add your filters
+            ])
+            ->rowActions([
+                // Add your row Actions;
+            ]);
+    }
+
+    protected function columns(): array
+    {
+        return [
+            // Customise your table columns
+        ];
+    }
+}

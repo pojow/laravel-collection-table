@@ -1,0 +1,16 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "concat_space": {
+            "spacing": "one"
+        },
+        "heredoc_to_nowdoc": false,
+        "phpdoc_align": {
+            "align": "left",
+            "spacing": {
+                "param": 1
+            }
+        },
+        "statement_indentation": false
+    }
+}
