@@ -99,10 +99,7 @@ class Column
             ...$filteredQuery,
             ...$columnOrderQuery,
         ];
-        $orderQueryString = implode('&', array_map(
-            static fn (string $key, ?string $value) => "$key=$value",
-            array_keys($orderQuery), $orderQuery
-        ));
+        $orderQueryString = http_build_query($orderQuery, '', '&');
 
         return $orderQueryString ? "?$orderQueryString" : request()->url();
     }
