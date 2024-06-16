@@ -16,6 +16,8 @@ class Table
 
     protected ?array $rowsPerPage;
 
+    protected bool $allowReset = false;
+
     public function __construct()
     {
         $this->columns = collect();
@@ -86,5 +88,17 @@ class Table
     public function getFilters(): Collection
     {
         return $this->filters;
+    }
+
+    public function allowReset(bool $allowReset = true): self
+    {
+        $this->allowReset = $allowReset;
+
+        return $this;
+    }
+
+    public function getAllowReset(): bool
+    {
+        return $this->allowReset;
     }
 }

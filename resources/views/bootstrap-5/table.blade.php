@@ -5,6 +5,14 @@
             <td class="px-0" {!! $columnsCount > 1 ? 'colspan="' . $columnsCount . '"' : null !!}>
                 <form action="" method="GET">
                     <div class="d-flex flex-column flex-xl-row">
+                        @if($table->getAllowReset())
+                            <div class="d-flex align-items-start pt-1 me-xl-3">
+                                <a href="{{ request()->url() }}" class="btn btn-md btn-primary"
+                                   title="{{ __('Reset') }}">
+                                    {!! view(config('laravel-collection-table.icon.reset'))->render() !!}
+                                </a>
+                            </div>
+                        @endif
                         <div class="flex-fill">
                             @if($searchableLabels)
                                 <div class="flex-fill pe-xl-3 py-1">

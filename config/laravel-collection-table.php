@@ -7,6 +7,7 @@ return [
         'destroy' => 'laravel-collection-table::svg.delete',
         'query' => 'laravel-collection-table::svg.type',
         'rows_number' => 'laravel-collection-table::svg.list-ordered',
+        'reset' => 'laravel-collection-table::svg.reset',
         'edit' => 'laravel-collection-table::svg.edit',
     ],
 
