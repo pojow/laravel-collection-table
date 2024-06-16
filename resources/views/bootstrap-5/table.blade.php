@@ -67,9 +67,15 @@
                         <a href="{{ $orderQuery }}"
                            class="d-flex align-items-center flex-nowrap">
                             <span>{{ $column->getTitle() }}</span>
-                            <span class="{{ str_contains($orderQuery, 'order_dir') ? '' : 'rotate-180' }}">
-                                {!! view(str_contains($orderQuery, 'order_dir=ASC') ? 'laravel-collection-table::svg.double-chevron' : 'laravel-collection-table::svg.chevron-down')->render() !!}
-                            </span>
+                            @if(request()->query('order_by') === $column->getAttribute())
+                                <span style="{{ request()->query('order_dir') === 'ASC' ? '' : 'transform: rotate(180deg)' }}">
+                                    {!! view('laravel-collection-table::svg.chevron-down')->render() !!}
+                                </span>
+                            @else
+                                <span>
+                                    {!! view('laravel-collection-table::svg.double-chevron')->render() !!}
+                                </span>
+                            @endif
                         </a>
                     </th>
                 @else
@@ -116,7 +122,7 @@
         <tr>
             <td class="align-middle"{!! $columnsCount > 1 ? ' colspan="' . $columnsCount . '"' : null !!}>
                 <div class="d-flex flex-wrap justify-content-end mt-3">
-                    {!! $rows->links(config('laravel-collection-table.views.pagination')) !!}
+                    {!! $rows->appends(request()->query())->links(config('laravel-collection-table.views.pagination')) !!}
                 </div>
             </td>
         </tr>
